@@ -72,7 +72,7 @@ body.sticky-bottom-footer {
 }
 
 .container {
-	max-width: 850px
+	max-width: 800px
 }
 
 .profile img {
@@ -478,10 +478,18 @@ footer.sticky-bottom {
 	text-align: right
 }
 
+
+.projects .container_row {
+display:flex;
+	}
+
 @media (max-width:500px){
-	.projects img.projects {
-	  width: 100%; 
-	  height: auto; 
+.projects .container_row img.project_m {
+	width: 100%; 
+	height: auto; 
+	}
+.projects .container_row {
+	display:block;
 	}
 }
 
