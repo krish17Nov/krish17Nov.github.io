@@ -38,36 +38,32 @@
 
       <!-- Rotating Image -->
       <style>
-        @keyframes initialRotate {
-          from {
-            transform: rotateY(0deg);
-          }
-          to {
-            transform: rotateY(180deg);
-          }
-        }
-      
-        @keyframes hoverRotate {
-          from {
-            transform: rotateY(180deg);
-          }
-          to {
-            transform: rotateY(360deg);
-          }
-        }
-      
-        .rotating {
-          animation-name: initialRotate;
-          animation-duration: 2s;
-          animation-fill-mode: forwards; /* Keeps the image at the end state when the animation completes */
-        }
-      
-        #profileImage:hover {
-          animation-name: hoverRotate;
-          animation-duration: 2s;
-          animation-fill-mode: forwards;
-        }
-      </style>
+         @keyframes initialRotate {
+           from {
+             transform: rotateY(0deg);
+           }
+           to {
+             transform: rotateY(180deg);
+           }
+         }
+       
+         @keyframes hoverRotate {
+           from {
+             transform: rotateY(180deg);
+           }
+           to {
+             transform: rotateY(360deg);
+           }
+         }
+       
+         .rotating {
+           animation: initialRotate 2s forwards;
+         }
+       
+         #profileImage:hover {
+           animation: hoverRotate 2s forwards;
+         }
+       </style>
    
     </head>
 
@@ -136,7 +132,7 @@
                <div class="profile float-right">
                   <figure>
                      <picture>
-                        <img class="rounded-circle" src="/assets/img/prof_pic1.jpeg" alt="prof_pic1.jpeg" style="padding-left: 1em;">
+                        <img id="profileImage" class="rounded-circle" src="/assets/img/prof_pic1.jpeg" alt="prof_pic1.jpeg" style="padding-left: 1em;">
                      </picture>
                   </figure>
                   <div class="address">
@@ -254,21 +250,33 @@
       <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
       <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const image = document.getElementById('profileImage');
-          
-          // Start the initial rotation animation
-          image.classList.add('rotating');
-      
-          // Listen for the end of the initial rotation
-          image.addEventListener('animationend', function() {
-            // Change the image source after the initial rotation completes
-            image.src = '/assets/img/prof_pic2.jpg';
-            // Remove the rotating class to avoid re-triggering the initial animation
-            image.classList.remove('rotating');
-          });
-        });
-      </script>
+         document.addEventListener('DOMContentLoaded', function() {
+           const image = document.getElementById('profileImage');
+           
+           // Start the initial rotation animation
+           image.classList.add('rotating');
+       
+           // Listen for the end of the initial rotation
+           image.addEventListener('animationend', function() {
+             // Only change the image source if the initial rotation just ended
+             if(image.classList.contains('rotating')) {
+               image.src = '/assets/img/prof_pic2.jpg';
+               image.classList.remove('rotating'); // Remove the class to avoid re-triggering the initial animation
+             }
+           });
+           
+           image.addEventListener('mouseover', function() {
+             // When hovering, switch back to the original image but keep the 'hoverRotate' animation
+             if (image.src.includes('prof_pic2.jpg')) {
+               image.src = '/assets/img/prof_pic1.jpeg';
+             }
+             elif (image.src.includes('prof_pic1.jpeg')) {
+               image.src = '/assets/img/prof_pic2.jpg';
+             }
+           });
+       
+         });
+       </script>
 
    </body>
 </html>
