@@ -37,31 +37,21 @@
       <script src="/assets/js/dark_mode.js"></script>
 
       <!-- Rotating Image -->
+      <!-- Rotating Image -->
       <style>
-         @keyframes initialRotate {
+         @keyframes rotateProfilePic {
            from {
              transform: rotateY(0deg);
-           }
-           to {
-             transform: rotateY(180deg);
-           }
-         }
-       
-         @keyframes hoverRotate {
-           from {
-             transform: rotateY(180deg);
            }
            to {
              transform: rotateY(360deg);
            }
          }
-       
-         .rotating {
-           animation: initialRotate 2s forwards;
-         }
-       
-         #profileImage:hover {
-           animation: hoverRotate 2s forwards;
+ 
+         .profile img {
+           transition: transform 3s;
+           transform-style: preserve-3d;
+           animation-name: none;
          }
        </style>
    
@@ -100,10 +90,15 @@
                      <!-- <li class="nav-item ">
                         <a class="nav-link" href="/blog/">blog</a>
                         </li> -->
-                     <!-- Other pages -->
+                     <!-- projects -->
                      <li class="nav-item ">
                         <a class="nav-link" href="/projects/">portfolio</a>
                      </li>
+                     <!-- publications -->
+                     <li class="nav-item ">
+                        <a class="nav-link" href="/publications/">publications</a>
+                     </li>
+
                      <!-- Toogle theme mode -->
                      <div class="toggle-container">
                         <a id="light-toggle">
@@ -251,32 +246,20 @@
 
       <script>
          document.addEventListener('DOMContentLoaded', function() {
-           const image = document.getElementById('profileImage');
-           
-           // Start the initial rotation animation
-           image.classList.add('rotating');
-       
-           // Listen for the end of the initial rotation
-           image.addEventListener('animationend', function() {
-             // Only change the image source if the initial rotation just ended
-             if(image.classList.contains('rotating')) {
-               image.src = '/assets/img/prof_pic2.jpg';
-               image.classList.remove('rotating'); // Remove the class to avoid re-triggering the initial animation
-             }
-           });
-           
-           image.addEventListener('mouseover', function() {
-             // When hovering, switch back to the original image but keep the 'hoverRotate' animation
-             if (image.src.includes('prof_pic2.jpg')) {
-               image.src = '/assets/img/prof_pic1.jpeg';
-             }
-             elif (image.src.includes('prof_pic1.jpeg')) {
-               image.src = '/assets/img/prof_pic2.jpg';
-             }
-           });
-       
+           const profileImage = document.querySelector('.profile img');
+           setInterval(() => {
+             profileImage.style.animationName = 'rotateProfilePic';
+             profileImage.style.animationDuration = '2s';
+             profileImage.style.animationFillMode = 'forwards';
+ 
+             setTimeout(() => {
+               const currentSrc = profileImage.getAttribute('src');
+               const newSrc = currentSrc.includes('prof_pic1.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic1.jpeg';
+               profileImage.src = newSrc;
+               profileImage.style.animationName = 'none';
+             }, 1000); // Halfway through the animation
+           }, 1000000); // Change image every 2 seconds
          });
        </script>
-
    </body>
 </html>
