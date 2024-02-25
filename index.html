@@ -35,6 +35,24 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark" />
       <script src="/assets/js/theme.js"></script>
       <script src="/assets/js/dark_mode.js"></script>
+
+      <!-- Rotating Image -->
+      <style>
+        @keyframes rotateProfilePic {
+          from {
+            transform: rotateY(0deg);
+          }
+          to {
+            transform: rotateY(360deg);
+          }
+        }
+      
+        .profile img {
+          transition: transform 2s;
+          transform-style: preserve-3d;
+          animation-name: none;
+        }
+      </style>
    
     </head>
 
@@ -152,13 +170,6 @@
                               Graduated from NIT Surat with a Bachelor's in Mechanical Engineering. 
                            </td>
                         </tr>
-                        <!-- <tr>
-                           <th scope="row">Mar 1, 2022</th>
-                           <td>
-                             Website Created!
-                           
-                           </td>
-                           </tr>  -->
                      </table>
                   </div>
                </div>
@@ -226,5 +237,24 @@
       </script>
       <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
       <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const profileImage = document.querySelector('.profile img');
+          setInterval(() => {
+            profileImage.style.animationName = 'rotateProfilePic';
+            profileImage.style.animationDuration = '2s';
+            profileImage.style.animationFillMode = 'forwards';
+      
+            setTimeout(() => {
+              const currentSrc = profileImage.getAttribute('src');
+              const newSrc = currentSrc.includes('prof_pic1.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic1.jpeg';
+              profileImage.src = newSrc;
+              profileImage.style.animationName = 'none';
+            }, 1000); // Halfway through the animation
+          }, 2000); // Change image every 2 seconds
+        });
+      </script>
+
    </body>
 </html>
