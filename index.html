@@ -53,7 +53,7 @@
          }
        
          .rounded-circle:hover {
-           animation: rotateProfilePic 3s forwards;
+           animation: rotateProfilePic 5s forwards;
          }
        </style>
    
@@ -143,9 +143,31 @@
                   <p>I also like to work on various projects and businees problems of different industries. Check out my <a href="https://archd3sai.github.io/projects/" target="_blank" rel="noopener noreferrer"> <b> portfolio </b></a> for all of my projects, micro-projects, skills, certificates, and achievements.</p>
                   <p>I am based out of SF Bay Area, CA and in my free time, I like to read, hike, travel, and explore different music genres over a cup of tea. If you are interested in having a conversation about almost anything, feel free to ping me. Thank you!</p>
                </div>
+               
+               <!-- current Endeavors -->
+               <div class="news" style="margin-top: 10px;">
+                  <h4><b>Current Endeavors</b></h4>
+                     <ul>
+                     <li class="mb-1">Deep diving into Transformers, RAG, and LLMs finetuning and inference.</li>
+                     <li class="mb-1">Exploring the potential of foundation models for Time Series Analysis and Forecasting.</li>
+                     <li class="mb-1">Tailoring a fitness and nutrition regimen for optimal health and performance outcomes.</li>
+                     </ul>
+                  </div>
+
+               <!-- skills -->
+               <div class="news"  style="margin-top: 30px;">
+                  <h4><b>Tech Arsenal</b></h4>
+                     <ul>
+                     <li class="mb-1"><strong>Languages</strong>: Python, R, SQL, C++ </li>
+                     <li class="mb-1"><strong>Skills</strong>: Machine Learning, Deep Learning, Time Series, NLP, Statistics, Data Structures & Algorithms</li>
+                     <li class="mb-1"><strong>Cloud</strong>: Amazon Web Services (S3, Lambda, API Gateway, ECR, ECS, EC2, Cloudwatch, SNS, SQS)</li>
+                     <li class="mb-1"><strong>Tools</strong>: Docker, Airflow, Elasticsearch, PostgreSQL, Serverless, Travis CI, Git, Terraform, Flask, MS Excel, Tableau, LangChain</li>
+                     </ul>
+                  </div>
+
                <!-- Career Timeline -->          
-               <div class="news">
-                  <h3>career timeline</h3>
+               <div class="news" style="margin-top: 30px;">
+                  <h4><b>Career Timeline</b></h4>
                   <div class="table-responsive">
                      <table class="table table-sm table-borderless">
                         <tr>
@@ -199,7 +221,7 @@
 
       <script>
         // Array of job titles to display
-        const jobTitles = ['Machine Learning Engineer', 'Software Developer', 'Data Enthusiast', 'Data Engineer'];
+        const jobTitles = ['Machine Learning Engineer', 'Data Engineer', 'Lifelong Learner', 'Curious Explorer', 'Applied Data Scientist'];
         // Select the element containing the job title
         const jobElement = document.querySelector('.desc b');
       
@@ -248,15 +270,19 @@
 
       <script>
          document.addEventListener('DOMContentLoaded', function() {
-           const profileImage = document.querySelector('.rounded-circle');
-       
-           profileImage.addEventListener('mouseenter', function() {
-             this.src = this.src.includes('prof_pic1.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic1.jpeg';
-           });
-       
-           profileImage.addEventListener('mouseleave', function() {
-             this.src = this.src.includes('prof_pic2.jpg') ? '/assets/img/prof_pic1.jpeg' : '/assets/img/prof_pic2.jpg';
-           });
+         const profileImage = document.querySelector('.rounded-circle');
+
+         let timer;
+
+         profileImage.addEventListener('mouseenter', function() {
+         timer = setTimeout(() => {
+            this.src = this.src.includes('prof_pic1.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic1.jpeg';
+            }, 1500); // 1 second delay 
+         });
+
+         profileImage.addEventListener('mouseleave', function() {
+               clearTimeout(timer); // cancel the timer
+            });
          });
        </script>
    </body>
