@@ -38,19 +38,34 @@
 
       <!-- Rotating Image -->
       <style>
-        @keyframes rotateProfilePic {
+        @keyframes initialRotate {
           from {
             transform: rotateY(0deg);
+          }
+          to {
+            transform: rotateY(180deg);
+          }
+        }
+      
+        @keyframes hoverRotate {
+          from {
+            transform: rotateY(180deg);
           }
           to {
             transform: rotateY(360deg);
           }
         }
       
-        .profile img {
-          transition: transform 2s;
-          transform-style: preserve-3d;
-          animation-name: none;
+        .rotating {
+          animation-name: initialRotate;
+          animation-duration: 2s;
+          animation-fill-mode: forwards; /* Keeps the image at the end state when the animation completes */
+        }
+      
+        #profileImage:hover {
+          animation-name: hoverRotate;
+          animation-duration: 2s;
+          animation-fill-mode: forwards;
         }
       </style>
    
@@ -240,19 +255,18 @@
 
       <script>
         document.addEventListener('DOMContentLoaded', function() {
-          const profileImage = document.querySelector('.profile img');
-          setInterval(() => {
-            profileImage.style.animationName = 'rotateProfilePic';
-            profileImage.style.animationDuration = '2s';
-            profileImage.style.animationFillMode = 'forwards';
+          const image = document.getElementById('profileImage');
+          
+          // Start the initial rotation animation
+          image.classList.add('rotating');
       
-            setTimeout(() => {
-              const currentSrc = profileImage.getAttribute('src');
-              const newSrc = currentSrc.includes('prof_pic1.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic1.jpeg';
-              profileImage.src = newSrc;
-              profileImage.style.animationName = 'none';
-            }, 1000); // Halfway through the animation
-          }, 2000); // Change image every 2 seconds
+          // Listen for the end of the initial rotation
+          image.addEventListener('animationend', function() {
+            // Change the image source after the initial rotation completes
+            image.src = '/assets/img/prof_pic2.jpg';
+            // Remove the rotating class to avoid re-triggering the initial animation
+            image.classList.remove('rotating');
+          });
         });
       </script>
 
