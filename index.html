@@ -37,7 +37,6 @@
       <script src="/assets/js/dark_mode.js"></script>
 
       <!-- Rotating Image -->
-      <!-- Rotating Image -->
       <style>
          @keyframes rotateProfilePic {
            from {
@@ -47,11 +46,14 @@
              transform: rotateY(360deg);
            }
          }
- 
-         .profile img {
+       
+         .rounded-circle {
            transition: transform 3s;
            transform-style: preserve-3d;
-           animation-name: none;
+         }
+       
+         .rounded-circle:hover {
+           animation: rotateProfilePic 3s forwards;
          }
        </style>
    
@@ -246,19 +248,15 @@
 
       <script>
          document.addEventListener('DOMContentLoaded', function() {
-           const profileImage = document.querySelector('.profile img');
-           setInterval(() => {
-             profileImage.style.animationName = 'rotateProfilePic';
-             profileImage.style.animationDuration = '2s';
-             profileImage.style.animationFillMode = 'forwards';
- 
-             setTimeout(() => {
-               const currentSrc = profileImage.getAttribute('src');
-               const newSrc = currentSrc.includes('prof_pic1.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic1.jpeg';
-               profileImage.src = newSrc;
-               profileImage.style.animationName = 'none';
-             }, 1000); // Halfway through the animation
-           }, 2000); // Change image every 2 seconds
+           const profileImage = document.querySelector('.rounded-circle');
+       
+           profileImage.addEventListener('mouseenter', function() {
+             this.src = this.src.includes('prof_pic1.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic1.jpeg';
+           });
+       
+           profileImage.addEventListener('mouseleave', function() {
+             this.src = this.src.includes('prof_pic2.jpg') ? '/assets/img/prof_pic1.jpeg' : '/assets/img/prof_pic2.jpg';
+           });
          });
        </script>
    </body>
