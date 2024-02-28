@@ -50,6 +50,9 @@
          .rounded-circle {
            transition: transform 3s;
            transform-style: preserve-3d;
+           width: 300px; /* Example size: adjust as needed */
+           height: 300px; /* Example size: adjust as needed */
+           border-radius: 50%; /* To maintain the circle shape */
          }
        
          .rounded-circle:hover {
@@ -129,7 +132,7 @@
                <div class="profile float-right">
                   <figure>
                      <picture>
-                        <img class="rounded-circle" src="/assets/img/prof_pic11.jpeg" alt="prof_pic11.jpeg" style="padding-left: 1em;">
+                        <img class="rounded-circle" src="/assets/img/prof_pic2.jpg" alt="prof_pic2.jpg" style="padding-left: 1em;">
                      </picture>
                   </figure>
                   <div class="address">
@@ -141,16 +144,16 @@
                   <p>My name is Arch and I am passionate about building data science and analytics solutions. I have 4.5+ years of experience in the field of machine learning and software development. With a master's in industrial engineering and a bachelor's in mechanical engineering, my path has been largely self-directed, driven by a relentless quest for knowledge and a knack for solving complex data problems. </p>
                   <p>I am currently working as a Data Scientist at <a href="https://www.sparkcognition.com/" target="_blank" rel="noopener noreferrer">Sparkcognition</a> in the field of Renewable Energy. I primarily work on building Renewable AI Assistant powered by LLMs and RAG, end-to-end ML models, Scalable ETL pipelines, External APIs, algorithms, KPIs, and much more, always with an eye on the sustainable future of our planet. </p>
                   <p>I also like to work on various projects and businees problems of different industries. Check out my <a href="https://archd3sai.github.io/projects/" target="_blank" rel="noopener noreferrer"> <b> portfolio </b></a> for all of my projects, micro-projects, skills, certificates, and achievements.</p>
-                  <p>I am based out of SF Bay Area, CA and in my free time, I like to read, hike, travel, and explore different music genres over a cup of tea. If you are interested in having a conversation about almost anything, feel free to ping me. Thank you!</p>
+                  <p>I am currently based out of Boston, MA and in my free time, I like to read, hike, travel, and explore different music genres over a cup of tea. If you are interested in having a conversation about almost anything, feel free to ping me. Thank you!</p>
                </div>
                
                <!-- current Endeavors -->
                <div class="news" style="margin-top: 10px;">
                   <h4><b>Current Endeavors</b></h4>
                      <ul>
-                     <li class="mb-1">Deep diving into Transformers, RAG, and LLMs finetuning and inference.</li>
+                     <li class="mb-1">Deep diving into Transformers, Advanced RAG, and LLMs finetuning and inference.</li>
                      <li class="mb-1">Exploring the potential of foundation models for Time Series Analysis and Forecasting.</li>
-                     <li class="mb-1">Tailoring a fitness and nutrition regimen for optimal health and performance outcomes.</li>
+                     <li class="mb-1">Tailoring a fitness, nutrition, and meditation regimen for optimal health and performance outcomes.</li>
                      </ul>
                   </div>
 
@@ -276,7 +279,7 @@
 
          profileImage.addEventListener('mouseenter', function() {
          timer = setTimeout(() => {
-            this.src = this.src.includes('prof_pic11.jpeg') ? '/assets/img/prof_pic2.jpg' : '/assets/img/prof_pic11.jpeg';
+            this.src = this.src.includes('prof_pic2.jpg') ? '/assets/img/prof_pic1.jpeg' : '/assets/img/prof_pic2.jpg';
             }, 1500); // 1 second delay 
          });
 
