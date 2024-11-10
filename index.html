@@ -54,6 +54,7 @@
            width: 300px; /* Example size: adjust as needed */
            height: 300px; /* Example size: adjust as needed */
            border-radius: 50%; /* To maintain the circle shape */
+           object-fit: cover; /* Ensures the image covers the circle without stretching */
          }
        
          /* .rounded-circle:hover {
@@ -133,7 +134,7 @@
                <div class="profile float-right">
                   <figure>
                      <picture>
-                        <img class="rounded-circle" src="/assets/img/profile_picture.jpg" alt="profile_picture.jpg" style="padding-left: 1em;">
+                        <img class="rounded-circle" src="/assets/img/profile_picture1.jpg" alt="profile_picture1.jpg" style="padding-left: 1em;">
                      </picture>
                   </figure>
                   <div class="address">
@@ -278,7 +279,7 @@
       <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
       <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
-      <script>
+      <!-- <script>
          document.addEventListener('DOMContentLoaded', function() {
          const profileImage = document.querySelector('.rounded-circle');
 
@@ -294,6 +295,6 @@
                clearTimeout(timer); // cancel the timer
             });
          });
-       </script>
+       </script> -->
    </body>
 </html>
