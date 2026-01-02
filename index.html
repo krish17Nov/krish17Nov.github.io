@@ -36,31 +36,17 @@
       <script src="/assets/js/theme.js"></script>
       <script src="/assets/js/dark_mode.js"></script>
 
-      <!-- Rotating Image -->
       <style>
-         /* Remove the keyframes for rotation */
-         /* @keyframes rotateProfilePic {
-            from {
-               transform: rotateY(0deg);
-            }
-            to {
-               transform: rotateY(360deg);
-            }
-         } */
-       
-         .rounded-circle {
-           /* transition: transform 3s; */
-           /* transform-style: preserve-3d; */
-           width: 300px; /* Example size: adjust as needed */
-           height: 300px; /* Example size: adjust as needed */
-           border-radius: 50%; /* To maintain the circle shape */
-           object-fit: cover; /* Ensures the image covers the circle without stretching */
-         }
-       
-         /* .rounded-circle:hover {
-           animation: rotateProfilePic 5s forwards;
-         } */
-       </style>
+        /* Profile picture styling */
+        .profile-pic {
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          object-fit: cover;
+          display: block;
+        }
+      </style>
+
    
     </head>
 
@@ -134,7 +120,10 @@
                <div class="profile float-right">
                   <figure>
                      <picture>
-                        <img class="rounded-circle" src="/assets/img/Profile_Picture.jpg" alt="Profile_Picture.jpg" style="padding-left: 1em;">
+                        <img class="profile-pic" src="/assets/img/Profile_Picture.jpg" alt="Profile picture">
+                        
+
+
                      </picture>
                   </figure>
                   <div class="address">
